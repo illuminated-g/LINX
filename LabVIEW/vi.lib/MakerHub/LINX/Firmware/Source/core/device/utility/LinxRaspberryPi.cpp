@@ -647,7 +647,7 @@ int LinxRaspberryPi::UartOpenDevice(const char device[], unsigned long baudRate,
 		UartPaths[newChannel] = c;
 		*channel = c;
 
-		return OpenDevice(c, baudRate, actualBaud);
+		return UartOpen(c, baudRate, actualBaud);
 	}
 }
 
