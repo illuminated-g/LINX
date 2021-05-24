@@ -119,6 +119,7 @@ LinxRaspberryPi2B::LinxRaspberryPi2B()
 	NumUartSpeeds = NUM_UART_SPEEDS;
 	UartSupportedSpeeds = m_UartSupportedSpeeds;
 	UartSupportedSpeedsCodes = m_UartSupportedSpeedsCodes;
+	m_NextUartChannel = NUM_UART_CHANS;
 	
 	//I2C
 	NumI2cChans = NUM_I2C_CHANS;	
@@ -232,3 +233,6 @@ LinxRaspberryPi2B::~LinxRaspberryPi2B()
 **  Functions
 ****************************************************************************************/
 
+int LinxRaspberryPi2B::UartNextChannel() {
+	return m_NextUartChannel++;
+}

@@ -113,6 +113,15 @@ int LinxDevice::PwmSetFrequency(unsigned char numChans, unsigned char* channels,
 
 // ---------------- UART Functions ------------------ 
 
+int LinxDevice::UartOpenDevice(const char device[], unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel)
+{
+	return LUART_OPEN_FAIL;
+}
+
+int LinxDevice::UartNextChannel() {
+	return -1;
+}
+
 void LinxDevice::UartWrite(unsigned char channel, unsigned char b)
 {
 	UartWrite(channel, 1, (unsigned char*)&b);

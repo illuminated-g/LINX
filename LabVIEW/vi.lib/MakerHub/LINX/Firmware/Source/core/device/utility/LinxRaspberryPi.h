@@ -63,7 +63,8 @@ class LinxRaspberryPi : public LinxDevice
 		//UART		
 		map<unsigned char, string> UartPaths;									//UART Channel File Paths
 		map<unsigned char, int> UartHandles;									//File Handles For UARTs - Must Be Int For Termios Functions
-		map<unsigned char, string> UartDtoNames;							//UART Device Tree Overlay Names	
+		map<unsigned char, string> UartDtoNames;							//UART Device Tree Overlay Names
+		map<string, unsigned char> UartDynamicDevices;						//UART Device to channel map
 		unsigned char NumUartSpeeds;												//Number Of Support UART Buads
 		unsigned long* UartSupportedSpeeds;										//Supported UART Bauds Frequencies
 		unsigned long* UartSupportedSpeedsCodes;							//Supported UART Baud Divider Codes
@@ -130,6 +131,7 @@ class LinxRaspberryPi : public LinxDevice
 		
 		//UART
 		virtual int UartOpen(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud);
+		virtual int UartOpenDevice(const char device[], unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel);
 		virtual int UartSetBaudRate(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud);
 		virtual int UartGetBytesAvailable(unsigned char channel, unsigned char *numBytes);
 		virtual int UartRead(unsigned char channel, unsigned char numBytes, unsigned char* recBuffer, unsigned char* numBytesRead);
