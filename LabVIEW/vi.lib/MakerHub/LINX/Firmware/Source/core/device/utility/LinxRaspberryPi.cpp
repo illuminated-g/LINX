@@ -646,9 +646,12 @@ int LinxRaspberryPi::UartOpenDevice(const char device[], unsigned long baudRate,
 		//Create mapping from channel to device path
 		UartPaths[newChannel] = c;
 		*channel = c;
-
-		return UartOpen(c, baudRate, actualBaud);
+	} else {
+		//mapped device path, use existing channel
+		*channel = UartDynamicDevices[device];
 	}
+
+	return UartOpen(*channel, baudRate, actualBaud);
 }
 
 int LinxRaspberryPi::UartSetBaudRate(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud)
