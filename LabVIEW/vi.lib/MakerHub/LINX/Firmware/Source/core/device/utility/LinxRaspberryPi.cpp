@@ -628,7 +628,7 @@ int LinxRaspberryPi::UartOpen(unsigned char channel, unsigned long baudRate, uns
 	return L_OK;
 }
 
-int LinxRaspberryPi::UartOpenDevice(const char device[], unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel)
+int LinxRaspberryPi::UartOpenDevice(const char* device, unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel)
 {
 	if (UartDynamicDevices.count(device) == 0) {
 		//New device path, create a channel mapping and then defer to standard open

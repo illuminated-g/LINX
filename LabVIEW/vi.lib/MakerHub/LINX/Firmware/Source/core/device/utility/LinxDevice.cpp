@@ -49,7 +49,7 @@ void LinxDevice::EnableDebug(unsigned char channel)
 {	
 	unsigned long actualBaud = 0;
 	
-	UartOpen(channel, 115200, &actualBaud);
+	UartOpen(channel, 19200, &actualBaud);
 	DebugPrintln("Debugging Enabled");
 }
 
