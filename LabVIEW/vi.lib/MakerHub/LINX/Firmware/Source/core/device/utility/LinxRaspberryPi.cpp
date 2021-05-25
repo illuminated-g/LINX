@@ -646,27 +646,19 @@ int LinxRaspberryPi::UartOpenDevice(const char* device, unsigned long baudRate, 
 			return LUART_OPEN_FAIL;
 		}
 
-		c = newChannel;
-
-		DebugPrint("Channel to U8 = ");
-		DebugPrintln(c, 10);
+		*channel = newChannel;
 
 		//Create mapping from device path to the channel
-		UartDynamicDevices[device] = c;
+		UartDynamicDevices[device] = *channel;
 
 		//Create mapping from channel to device path
-		UartPaths[newChannel] = c;
+		UartPaths[newChannel] = device;
 	} else {
 		//mapped device path, use existing channel
-		c = UartDynamicDevices[device];
+		*channel = UartDynamicDevices[device];
 	}
 
-	DebugPrint("Opening with channel ");
-	DebugPrintln(c, 10);
-	
-	*channel = c;
-
-	return UartOpen(c, baudRate, actualBaud);
+	return UartOpen(*channel, baudRate, actualBaud);
 }
 
 int LinxRaspberryPi::UartSetBaudRate(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud)
