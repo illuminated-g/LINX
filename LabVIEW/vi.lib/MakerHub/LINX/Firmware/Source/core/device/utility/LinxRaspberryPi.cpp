@@ -647,7 +647,7 @@ int LinxRaspberryPi::UartOpenDevice(const char* device, unsigned long baudRate, 
 		unsigned char c = newChannel;
 
 		DebugPrint("Channel to U8 = ");
-		DebugPrintln(c);
+		DebugPrintln(c, 10);
 
 		//Create mapping from device path to the channel
 		UartDynamicDevices[device] = c;
