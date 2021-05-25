@@ -15,6 +15,9 @@
 
 #include "LinxDevice.h"
 
+//#define LINX_DEVICE_FAMILY 4
+//#define LINX_DEVICE_ID 3
+
 //------------------------------------- Raspberry Pi -------------------------------------
 #if LINX_DEVICE_FAMILY == 4 
 	#if LINX_DEVICE_ID == 3	//RPI 2 B
@@ -407,6 +410,10 @@ extern "C" int LinxUartGetChans(unsigned char numChans, unsigned char* channels)
 extern "C" int LinxUartOpen(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud)
 {
 	return LinxDev->UartOpen(channel, baudRate, actualBaud);
+}
+extern "C" int LinxUartOpenDevice(char* device, unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel)
+{
+	return LinxDev->UartOpenDevice(device, baudRate, actualBaud, channel);
 }
 extern "C" int LinxUartSetBaudRate(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud)
 {

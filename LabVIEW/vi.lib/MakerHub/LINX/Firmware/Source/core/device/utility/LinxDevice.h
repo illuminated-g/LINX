@@ -267,7 +267,7 @@ class LinxDevice
 		//UART
 
 		virtual int UartOpen(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud) = 0;
-		virtual int UartOpenDevice(const char device[], unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel);
+		virtual int UartOpenDevice(const char* device, unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel);
 		virtual int UartNextChannel();
 		virtual int UartSetBaudRate(unsigned char channel, unsigned long baudRate, unsigned long* actualBaud) = 0;
 		virtual int UartGetBytesAvailable(unsigned char channel, unsigned char *numBytes) = 0;

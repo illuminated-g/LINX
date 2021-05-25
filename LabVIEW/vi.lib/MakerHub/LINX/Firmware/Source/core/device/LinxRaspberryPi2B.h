@@ -90,7 +90,7 @@ class LinxRaspberryPi2B : public LinxRaspberryPi
 		static int m_UartHandles[NUM_UART_CHANS];
 		static string m_UartPaths[NUM_UART_CHANS];
 
-		static int m_NextUartChannel;
+		int m_NextUartChannel;
 		
 		//Servo		
 		//None
