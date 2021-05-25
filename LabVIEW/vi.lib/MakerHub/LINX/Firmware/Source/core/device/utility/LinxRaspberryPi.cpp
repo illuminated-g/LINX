@@ -630,9 +630,15 @@ int LinxRaspberryPi::UartOpen(unsigned char channel, unsigned long baudRate, uns
 
 int LinxRaspberryPi::UartOpenDevice(const char* device, unsigned long baudRate, unsigned long* actualBaud, unsigned char* channel)
 {
+	DebugPrint("\nAttempting open for ");
+	DebugPrintln(device);
+
 	if (UartDynamicDevices.count(device) == 0) {
 		//New device path, create a channel mapping and then defer to standard open
 		int newChannel = UartNextChannel();
+
+		DebugPrint("Mapping device to channel ");
+		DebugPrintln(newChannel);
 
 		if (newChannel < 0) {
 			return LUART_OPEN_FAIL;
@@ -650,6 +656,9 @@ int LinxRaspberryPi::UartOpenDevice(const char* device, unsigned long baudRate, 
 		//mapped device path, use existing channel
 		*channel = UartDynamicDevices[device];
 	}
+
+	DebugPrint("Opening with channel ");
+	DebugPrintln(*channel);
 
 	return UartOpen(*channel, baudRate, actualBaud);
 }
